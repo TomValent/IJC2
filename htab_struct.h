@@ -11,8 +11,7 @@
 
 struct htab_item
 {
-    char *key;
-    int data;
+    struct htab_pair_t pair;
     struct htab_item *next;
 };
 
