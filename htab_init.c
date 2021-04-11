@@ -1,4 +1,4 @@
-// htab_init
+// htab_init.c
 // Riesenie IJC-DU2, priklad a), 20. 4. 2021
 // Autor: Tomas Valent
 // Prekladac: gcc 9.3
