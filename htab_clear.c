@@ -8,7 +8,7 @@
 #include "htab_struct.h"
 #include <stdlib.h>
 
-htab_t htab_clear(htab_t *table)
+void htab_clear(htab_t *table)
 {
     htab_item *current;
     htab_item *erase;
@@ -26,5 +26,4 @@ htab_t htab_clear(htab_t *table)
         table->arr[i] = NULL;
     }
     table->size = 0;
-    return table;
 }
