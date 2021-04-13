@@ -12,8 +12,8 @@ htab_t htab_move(size_t number, htab_t *t2)
     htab_t table = htab_init(number);   //nova tabulka so zadanou velkostou
     if(table == NULL)
         return NULL;
-    //todo presun z 1 do druheho
 
-    t2 = init_clear(t2);                //todo vypraznidni tabulku
+
+    t2 = htab_clear(t2);
     return table;
 }
