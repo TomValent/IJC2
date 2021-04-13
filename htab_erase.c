@@ -22,19 +22,28 @@ bool htab_erase(htab_t *table, htab_key_t key)
         return true;
     }
 
-    while (1)
+    while (item->next != NULL)
     {
         if (item->next == key)
         {
-            item->next = item->next->next;
-            free(item->next->next);
-            free(item->next);
-            return true
+            if(item->next->next != NULL)
+            {
+                item->next = item->next->next;
+                free(item->next->next);
+                free(item->next);
+                return true;
+            }
+            else
+            {
+                free(item->next->next);
+                free(item->next);
+                return true;
+            }
         }
         else
         {
             item = item->next;
         }
     }
-    return false;s
+    return false;
 }
