@@ -16,11 +16,11 @@ htab_t htab_clear(htab_t *table)
     for(size_t i = 0; i < table->arr_size; i++)
     {
         current = table->arr[i];
-        while(current_item != NULL)
+        while(current != NULL)
         {
             toErase = current;
-            current_item = current->next;
-            free(erase->key);
+            current = current->next;
+            free(erase->pair.key);
             free(erase);
         }
         table->arr[i] = NULL;

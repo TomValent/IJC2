@@ -1,0 +1,40 @@
+// htab_erase.c
+// Riesenie IJC-DU2, priklad b), 20. 4. 2021
+// Autor: Tomas Valent
+// Prekladac: gcc 9.3
+// Vymazanie prvku tabulky
+
+#include "htab.h"
+#include "htab_struct.h"
+#include <stdlib.h>
+
+bool htab_erase(htab_t *table, htab_key_t key)
+{
+    size_t hash = htab_hash_function(key);
+    size_t index = hash % table->arr_size;
+    struct htab_item *item = table->arr[index];
+
+    if (item == key)
+    {
+        item = item->next;
+        free(item->next);
+        free(key);
+        return true;
+    }
+
+    while (1)
+    {
+        if (item->next == key)
+        {
+            item->next = item->next->next;
+            free(item->next->next);
+            free(item->next);
+            return true
+        }
+        else
+        {
+            item = item->next;
+        }
+    }
+    return false;s
+}
