@@ -10,16 +10,27 @@
 htab_t htab_move(size_t number, htab_t *t2)
 {
     htab_t table = htab_init(number);   //nova tabulka so zadanou velkostou
-    size_t hash = htab_hash_function(key);
-    size_t index = hash % table->arr_size;
-    htab_item *item = table->arr[index];
 
     if(table == NULL)
         return NULL;
 
-    for(size_t i; i < table->arr_size; i++)
+    for(size_t i; i < table->arr_size; i++)     //presun do novej tabulky
     {
-        table[index] = htab_lookup_add(&t2, index);
+        struct htab_item *tmp = table->arr[i];
+        if(table->arr[i] != NULL)
+        {
+            size_t hash htab_hash_function(i);
+            size_t newIndex = hash % t2->arr_size;
+
+            while(tmp)
+            {
+                t2->arr[newIndex] = tmp->arr[i];
+                if(tmp->next != NULL)
+                    tmp = tmp->next;
+                else
+                    break;
+            }
+        }
     }
 
     t2 = htab_clear(t2);
