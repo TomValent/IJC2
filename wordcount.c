@@ -48,7 +48,7 @@ int main()
 
         table->arr->pair = htab_lookup_add(table, word);
 
-        if(!table->arr)
+        if(!table->arr->pair)
         {
             fprintf(stderr, "Word can not be put to table.\n");
             htab_free(table);
