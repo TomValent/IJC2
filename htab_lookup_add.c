@@ -60,7 +60,7 @@ htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
     newItem.key = malloc((strlen(key) + 1) * sizeof(char));    //alokacia pamati pre key a jeho presun
     if(newItem->key == NULL)
         return NULL;
-    memcpy(newItem->key, key, (strlen(key) + 1));
+    memcpy(newItem.key, key, (strlen(key) + 1));
     newItem->next = NULL;
     newItem.value = 0;
 
