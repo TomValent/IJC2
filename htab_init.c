@@ -6,10 +6,11 @@
 
 #include "htab.h"
 #include "htab_struct.h"
+#include <stdlib.h>
 
 htab_t htab_init(size_t number)
 {
-    htab_t table = malloc (sizeof(htab_t) + n * sizeof(struct htab_item));
+    htab_t table = malloc(sizeof(htab_t) + n * sizeof(struct htab_item));
     if(table == NULL)
     {
         return NULL;
