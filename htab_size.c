@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-size_t htab_size(htab_t *table);
+size_t htab_size(const htab_t *table)
 {
     return table->size;
 }

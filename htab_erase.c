@@ -14,7 +14,7 @@ bool htab_erase(htab_t *table, htab_key_t key)
     size_t index = hash % table->arr_size;
     struct htab_item *item = table->arr[index];
 
-    if (item == key)
+    if (item->pair->key == key)
     {
         item = item->next;
         free(item->next);

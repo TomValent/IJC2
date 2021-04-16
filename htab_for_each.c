@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-htab_t htab_for_each(htab_t *table, void (*f)(htab_pair_t *data))
+htab_t htab_for_each(const htab_t *table, void (*f)(htab_pair_t *data))
 {
     for(unsigned int i; i < table->arr_size; i++)
     {
@@ -24,5 +24,5 @@ htab_t htab_for_each(htab_t *table, void (*f)(htab_pair_t *data))
             }
         }
     }
-    return table;
+    return *table;
 }

@@ -10,17 +10,17 @@
 
 void htab_clear(htab_t *table)
 {
-    htab_item *current;
-    htab_item *erase;
+    struct htab_item *current;
+    struct htab_item *erase;
 
     for(size_t i = 0; i < table->arr_size; i++)
     {
         current = table->arr[i];
         while(current != NULL)
         {
-            toErase = current;
+            erase = current;
             current = current->next;
-            free(erase->pair.key);
+            free(erase->pair->key);
             free(erase);
         }
         table->arr[i] = NULL;

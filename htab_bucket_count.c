@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-size_t htab_bucket_count(htab_t *table);
+size_t htab_bucket_count(const htab_t *table)
 {
     return table->arr_size;
 }
