@@ -8,7 +8,7 @@
 #include "htab_struct.h"
 #include <stdlib.h>
 
-htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
+struct htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
 {
     size_t hash = htab_hash_function(key);
     size_t index = hash % table->arr_size;
@@ -28,7 +28,7 @@ htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
 
         table->size++;
         table->arr[index] = newItem;                 //pridani do tabulky
-        return &(item->pair);
+        return (item->pair);
     }
 
     while (item->next != NULL)                       //ine polozky
@@ -37,7 +37,7 @@ htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
         {
             if (strncmp(key, item->pair->key, strlen(key)) == 0)
             {
-                return &(item->pair);
+                return (item->pair);
             }
         }
         item = item->next;
@@ -47,7 +47,7 @@ htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
     {
         if (strncmp(key, item->pair->key, strlen(key)) == 0)
         {
-            return &(item->pair);
+            return (item->pair);
         }
     }
 

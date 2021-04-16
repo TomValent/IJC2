@@ -18,13 +18,13 @@ bool htab_erase(htab_t *table, htab_key_t key)
     {
         item = item->next;
         free(item->next);
-        free(key);
+        free(item->pair->key);
         return true;
     }
 
     while (item->next != NULL)
     {
-        if (item->next == key)
+        if (item->next->pair->key == key)
         {
             if(item->next->next != NULL)
             {

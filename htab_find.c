@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-htab_pair_t* htab_find(htab_t *table, htab_key_t key)
+struct htab_pair_t* htab_find(htab_t *table, htab_key_t key)
 {
     size_t hash = htab_hash_function(key);
     size_t index = hash % table->arr_size;
@@ -17,7 +17,7 @@ htab_pair_t* htab_find(htab_t *table, htab_key_t key)
     {
         if (strncmp(key, item->pair->key, strlen(key)) == 0)      //spravny kluc
         {
-            return &(item->pair);
+            return (item->pair);
         }
     }
 
@@ -25,7 +25,7 @@ htab_pair_t* htab_find(htab_t *table, htab_key_t key)
     {
         if (strlen(key) == strlen(item->pair->key)) {
             if (strncmp(key, item->pair->key, strlen(key)) == 0) {
-                return &(item->pair);
+                return (item->pair);
             }
         }
 
@@ -35,7 +35,7 @@ htab_pair_t* htab_find(htab_t *table, htab_key_t key)
     {
         if (strncmp(key, item->pair->key, strlen(key)) == 0)
         {
-            return &(item->pair);
+            return (item->pair);
         }
     }
     return NULL;
