@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-struct htab_pair_t* htab_find(htab_t *table, htab_key_t key)
+struct htab_pair_t *htab_find(htab_t *table, htab_key_t key)
 {
     size_t hash = htab_hash_function(key);
     size_t index = hash % table->arr_size;

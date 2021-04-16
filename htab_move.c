@@ -7,7 +7,7 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-htab_t htab_move(size_t number, htab_t *t2)
+htab_t *htab_move(size_t number, htab_t *t2)
 {
     htab_t *table = htab_init(number);   //nova tabulka so zadanou velkostou
 
