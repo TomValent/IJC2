@@ -19,12 +19,12 @@ htab_t *htab_move(size_t number, htab_t *t2)
         struct htab_item *tmp = table->arr[i];
         if(table->arr[i] != NULL)
         {
-            size_t hash = htab_hash_function(table->arr[i]->pair->key);
+            size_t hash = htab_hash_function(table->arr[i]->pair.key);
             size_t newIndex = hash % t2->arr_size;
 
             while(tmp)
             {
-                t2->arr[newIndex] = tmp->arr[i];
+                t2->arr[newIndex] = tmp;
                 if(tmp->next != NULL)
                     tmp = tmp->next;
                 else

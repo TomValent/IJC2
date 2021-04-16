@@ -20,7 +20,7 @@ void htab_clear(htab_t *table)
         {
             erase = current;
             current = current->next;
-            free(erase->pair->key);
+            free((char *)erase->pair.key);
             free(erase);
         }
         table->arr[i] = NULL;

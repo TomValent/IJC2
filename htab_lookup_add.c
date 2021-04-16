@@ -8,7 +8,7 @@
 #include "htab_struct.h"
 #include <stdlib.h>
 
-struct htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
+htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
 {
     size_t hash = htab_hash_function(key);
     size_t index = hash % table->arr_size;
@@ -16,53 +16,53 @@ struct htab_pair_t* htab_lookup_add(htab_t *table, htab_key_t key)
 
     if (item == NULL)                                                    //tabulka je prazdna, vytvorim prvy prvok
     {
-        struct htab_item *newItem = malloc(sizeof(htab_item));
-        if(newItem->pair->key == NULL)
+        struct htab_item *newItem = malloc(sizeof(struct htab_item));
+        if(newItem->pair.key == NULL)
             return NULL;
-        newItem->pair->key = malloc((strlen(key) + 1) * sizeof(char));    //alokacia pamati pre key a jeho presun
-        if(newItem->pair->key == NULL)
+        newItem->pair.key = malloc((strlen(key) + 1) * sizeof(char));    //alokacia pamati pre key a jeho presun
+        if(newItem->pair.key == NULL)
             return NULL;
-        memcpy(newItem->pair->key, key, (strlen(key) + 1));
+        memcpy((char *)newItem->pair.key, key, (strlen(key) + 1));
         newItem->next = NULL;
-        newItem->pair->value = 0;
+        newItem->pair.value = 0;
 
         table->size++;
         table->arr[index] = newItem;                 //pridani do tabulky
-        return (item->pair);
+        return &(item->pair);
     }
 
     while (item->next != NULL)                       //ine polozky
     {
-        if (strlen(key) == strlen(item->pair->key))
+        if (strlen(key) == strlen(item->pair.key))
         {
-            if (strncmp(key, item->pair->key, strlen(key)) == 0)
+            if (strncmp(key, item->pair.key, strlen(key)) == 0)
             {
-                return (item->pair);
+                return &(item->pair);
             }
         }
         item = item->next;
     }
 
-    if (strlen(key) == strlen(item->pair->key))            //posledna polozka
+    if (strlen(key) == strlen(item->pair.key))            //posledna polozka
     {
-        if (strncmp(key, item->pair->key, strlen(key)) == 0)
+        if (strncmp(key, item->pair.key, strlen(key)) == 0)
         {
-            return (item->pair);
+            return &(item->pair);
         }
     }
 
-    htab_pair_t *newItem = malloc(sizeof(htab_pair_t));
+    struct htab_item *newItem = malloc(sizeof(struct htab_item));
     if(newItem == NULL)
     {
         return NULL;
     }
 
-    newItem->pair->key = malloc((strlen(key) + 1) * sizeof(char));    //alokacia pamati pre key a jeho presun
-    if(newItem->key == NULL)
+    newItem->pair.key = malloc((strlen(key) + 1) * sizeof(char));    //alokacia pamati pre key a jeho presun
+    if(newItem->pair.key == NULL)
         return NULL;
-    memcpy(newItem->pair->key, key, (strlen(key) + 1));
+    memcpy((char *)newItem->pair.key, key, (strlen(key) + 1));
     newItem->next = NULL;
-    newItem->value = 0;
+    newItem->pair.value = 0;
 
     newItem->next = newItem;
     table->size++;

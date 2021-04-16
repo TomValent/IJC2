@@ -7,35 +7,35 @@
 #include "htab.h"
 #include "htab_struct.h"
 
-struct htab_pair_t *htab_find(htab_t *table, htab_key_t key)
+htab_pair_t *htab_find(htab_t *table, htab_key_t key)
 {
     size_t hash = htab_hash_function(key);
     size_t index = hash % table->arr_size;
     struct htab_item *item = table->arr[index];
 
-    if (strlen(key) == strlen(item->pair->key))                   //prvy prvok
+    if (strlen(key) == strlen(item->pair.key))                   //prvy prvok
     {
-        if (strncmp(key, item->pair->key, strlen(key)) == 0)      //spravny kluc
+        if (strncmp(key, item->pair.key, strlen(key)) == 0)      //spravny kluc
         {
-            return (item->pair);
+            return &(item->pair);
         }
     }
 
     while(item->next != NULL)                               //vsetky prvky medzi
     {
-        if (strlen(key) == strlen(item->pair->key)) {
-            if (strncmp(key, item->pair->key, strlen(key)) == 0) {
-                return (item->pair);
+        if (strlen(key) == strlen(item->pair.key)) {
+            if (strncmp(key, item->pair.key, strlen(key)) == 0) {
+                return &(item->pair);
             }
         }
 
         item = item->next;
     }
-    if (strlen(key) == strlen(item->pair->key))                   //posledny prvok
+    if (strlen(key) == strlen(item->pair.key))                   //posledny prvok
     {
-        if (strncmp(key, item->pair->key, strlen(key)) == 0)
+        if (strncmp(key, item->pair.key, strlen(key)) == 0)
         {
-            return (item->pair);
+            return &(item->pair);
         }
     }
     return NULL;
