@@ -32,7 +32,5 @@ htab_t *htab_move(size_t number, htab_t *t2)
             }
         }
     }
-
-    t2 = htab_clear(t2);
-    return *table;
+    return table;
 }

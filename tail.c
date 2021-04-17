@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 
     while(fgets(line, LINESIZE+1, subor) != NULL)
     {
-        if(++lineCounterSecond > lineCounterFirst - lastLines)
+        if(++lineCounterSecond >= lineCounterFirst - lastLines)
         {
             if(strlen(line) > LINESIZE)
             {

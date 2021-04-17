@@ -23,8 +23,9 @@
 int main()
 {
     FILE *filename = stdin;
+    htab_pair_t *pair;
 
-    char* word = malloc(MAX_SIZE * sizeof(char));
+    char *word = malloc(MAX_SIZE * sizeof(char));
     if (!word)
     {
         fprintf(stderr, "Error in allocating memory.\n");
@@ -46,16 +47,16 @@ int main()
             fprintf(stderr, "Word is too long and was not read in its entirety.\n");
         }
 
-        table->arr->pair = htab_lookup_add(table, word);
+        pair = htab_lookup_add(table, word);
 
-        if(!table->arr->pair)
+        if(!pair)
         {
             fprintf(stderr, "Word can not be put to table.\n");
             htab_free(table);
-            htab_free(word);
+            free(word);
             return 1;
         }
-        table->size++;
+        pair->value++;
     }
 
     for(unsigned int i; i < table->arr_size; i++)

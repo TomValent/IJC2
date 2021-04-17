@@ -29,13 +29,10 @@ io.o: io.c io.h
 	$(C) -c $<
 
 libhtab.a: htab.h htab_bucket_count.c htab_clear.c htab_erase.c htab_find.c htab_for_each.c htab_free.c htab_hash_function.c htab_init.c htab_lookup_add.c htab_move.c htab_size.c htab_struct.h
-	ar rcs $@ $^
+	ar rcs libhtab.a $^
 
 libhtab.so: htab.h htab_bucket_count.c htab_clear.c htab_erase.c htab_find.c htab_for_each.c htab_free.c htab_hash_function.c htab_init.c htab_lookup_add.c htab_move.c htab_size.c htab_struct.h
 	$(C) -fPIC -shared $^ -o $@
-
-wordcount.o:  io.c io.h
-	$(C) $(CFLAGS) -c htab.h htab_bucket_count.c htab_clear.c htab_erase.c htab_find.c htab_for_each.c htab_free.c htab_hash_function.c htab_init.c htab_lookup_add.c htab_move.c htab_size.c htab_struct.h io.c io.h -o wordcount.o
 
 %.o: %.c
 	$(C) -fPIC -c $< htab.h htab_struct.h

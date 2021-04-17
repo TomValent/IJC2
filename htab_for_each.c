@@ -16,7 +16,7 @@ void htab_for_each(const htab_t *table, void (*f)(htab_pair_t *data))
         {
             while(tmp)
             {
-                f(tmp);
+                f(&(tmp->pair));
                 if(tmp->next != NULL)
                     tmp=tmp->next;
                 else

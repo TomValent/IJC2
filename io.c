@@ -6,7 +6,7 @@
 
 #include "io.h"
 
-int read_word(char *s, int max, FILE *f)
+int read_word(char *s, int max, FILE *filename)
 {
     if(!filename)
     {
@@ -16,7 +16,7 @@ int read_word(char *s, int max, FILE *f)
 
     int character = 0;
 
-    while((character = fgetc(f)) && isspace(character))
+    while((character = fgetc(filename)) && isspace(character))
     {
         //skip first space
         ;
@@ -32,7 +32,7 @@ int read_word(char *s, int max, FILE *f)
 
     while(counter < (max - 1))
     {
-        character = fgetc(f);
+        character = fgetc(filename);
         if(character == EOF || isspace(character))
         {
             break;
@@ -44,7 +44,7 @@ int read_word(char *s, int max, FILE *f)
 
     if((max - 1) == counter)
     {
-        while((character = fgetc(f)) != EOF && !isspace(character))
+        while((character = fgetc(filename)) != EOF && !isspace(character))
         {
             counter++;
         }
