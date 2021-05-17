@@ -109,6 +109,6 @@ int main(int argc, char **argv)
         }
     }
 
-    fclose(filename);
+    fclose(subor);
     return 0;
 }
