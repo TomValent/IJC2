@@ -17,7 +17,7 @@ tail.o: tail.c
 
 #wordcount program
 wordcount: wordcount.o io.o libhtab.a
-	$(C) $^ -o $@
+	$(C) $^ -static -o $@
 
 wordcount-dynamic: wordcount.o io.o libhtab.so
 	$(C) $^ -o $@
