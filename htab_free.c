@@ -1,5 +1,5 @@
 // htab_free.c
-// Riesenie IJC-DU2, priklad b), 20. 4. 2021
+// Riesenie IJC-DU2, priklad b) 20. 4. 2021
 // Autor: Tomas Valent
 // Prekladac: gcc 9.3
 // Uvolnenie hash tabulky
