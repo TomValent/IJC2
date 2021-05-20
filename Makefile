@@ -53,7 +53,7 @@ htab_init.o: htab_init.c
 	$(C) $(CFLAGS) -c htab_init.c -o htab_init.o
 
 htab_lookup_add.o: htab_lookup_add.c
-	$(C) $(CFLAGS) -c htab_lookup_add.c -o htab_lookup_add.o
+	$(C) $(CFLAGS) -fPIC -c htab_lookup_add.c -o htab_lookup_add.o
 
 htab_move.o: htab_move.c
 	$(C) $(CFLAGS) -c htab_move.c -o htab_move.o
