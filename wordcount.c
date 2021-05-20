@@ -59,7 +59,7 @@ int main()
         pair->value++;
     }
 
-    for(unsigned int i; i < table->arr_size; i++)
+    for(unsigned int i = 0; i < table->arr_size; i++)
     {
         struct htab_item *tmp = table->arr[i];
         if(table->arr[i] != NULL)
